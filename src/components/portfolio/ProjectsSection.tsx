@@ -3,13 +3,14 @@ import { ExternalLink, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
+import dreflowPreview from "@/assets/dreflow-preview.png";
 
 type Project = {
   name: string;
   tagline: string;
   description: string;
   tech: string[];
-  gradient: string;
+  image: string;
   github: string;
   live: string;
 };
@@ -18,9 +19,9 @@ const projects: Project[] = [
   {
     name: "Dreflow",
     tagline: "Web application",
-    description: "A web application built and deployed on Netlify.",
+    description: "A full-featured canvas editor and video studio built for speed. Design graphics, edit videos, and export anywhere — all in one seamless workspace.",
     tech: ["React", "TypeScript", "Tailwind"],
-    gradient: "bg-gradient-card-1",
+    image: dreflowPreview,
     github: "#",
     live: "https://dreflow.netlify.app/",
   },
