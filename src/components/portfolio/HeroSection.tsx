@@ -3,7 +3,7 @@ import { ChevronDown, Download, FolderGit2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-const roles = ["Software Developer", "Frontend Engineer", "UI Engineer", "Full-stack Tinkerer"];
+const roles = ["Product Engineer", "Full-Stack Engineer", "Frontend Engineer", "UI Engineer"];
 
 export function HeroSection() {
   const [roleIdx, setRoleIdx] = useState(0);
