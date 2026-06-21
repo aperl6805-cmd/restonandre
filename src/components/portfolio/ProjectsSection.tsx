@@ -3,13 +3,14 @@ import { ExternalLink, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
+import dreflowPreview from "@/assets/dreflow-preview.png";
 
 type Project = {
   name: string;
   tagline: string;
   description: string;
   tech: string[];
-  gradient: string;
+  image: string;
   github: string;
   live: string;
 };
@@ -18,9 +19,9 @@ const projects: Project[] = [
   {
     name: "Dreflow",
     tagline: "Web application",
-    description: "A web application built and deployed on Netlify.",
+    description: "A full-featured canvas editor and video studio built for speed. Design graphics, edit videos, and export anywhere — all in one seamless workspace.",
     tech: ["React", "TypeScript", "Tailwind"],
-    gradient: "bg-gradient-card-1",
+    image: dreflowPreview,
     github: "#",
     live: "https://dreflow.netlify.app/",
   },
@@ -75,9 +76,15 @@ export function ProjectsSection() {
           {projects.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.1} className={i === 0 ? "md:row-span-2" : ""}>
               <SpotlightCard className="h-full">
-                <div className={`${p.gradient} relative mb-5 flex aspect-[16/10] items-end overflow-hidden rounded-xl p-5`}>
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_60%)]" />
-                  <span className="relative font-mono text-xs uppercase tracking-widest text-background/80">
+                <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-border">
+                  <img
+                    src={p.image}
+                    alt={`${p.name} preview`}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+                  <span className="absolute bottom-3 left-4 font-mono text-xs uppercase tracking-widest text-foreground/80">
                     {String(i + 1).padStart(2, "0")} / {p.tagline}
                   </span>
                 </div>
