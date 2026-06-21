@@ -18,9 +18,10 @@ type Project = {
 const projects: Project[] = [
   {
     name: "Dreflow",
-    tagline: "Web application",
-    description: "A full-featured canvas editor and video studio built for speed. Design graphics, edit videos, and export anywhere — all in one seamless workspace.",
-    tech: ["React", "TypeScript", "Tailwind"],
+    tagline: "Canvas + video studio",
+    description:
+      "Built a browser-based canvas and video editor on top of the HTML5 Canvas API with a custom scene-graph and immutable state store. Solved real-time preview bottlenecks by batching renders via requestAnimationFrame and offloading heavy frame work to Web Workers, keeping interactions at 60fps under multi-layer compositions.",
+    tech: ["React", "TypeScript", "Canvas API", "Web Workers", "Tailwind"],
     image: dreflowPreview,
     github: "#",
     live: "https://dreflow.netlify.app/",

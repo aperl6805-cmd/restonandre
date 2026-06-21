@@ -3,7 +3,7 @@ import { ChevronDown, Download, FolderGit2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-const roles = ["Software Developer", "Frontend Engineer", "UI Engineer", "Full-stack Tinkerer"];
+const roles = ["Product Engineer", "Full-Stack Engineer", "Frontend Engineer", "UI Engineer"];
 
 export function HeroSection() {
   const [roleIdx, setRoleIdx] = useState(0);
@@ -87,21 +87,27 @@ export function HeroSection() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="relative mx-auto flex aspect-square w-full max-w-sm items-center justify-center"
+          className="relative mx-auto w-full max-w-sm"
         >
-          <div className="absolute inset-0 rounded-full bg-primary/10 blur-3xl animate-pulse-glow" />
-          <svg viewBox="0 0 200 200" className="relative h-full w-full">
-            <g fill="none" strokeWidth="1.5">
-              <circle cx="100" cy="100" r="90" stroke="hsl(160 84% 39% / 0.4)" className="origin-center animate-spin-slow" style={{ transformOrigin: "100px 100px" }} strokeDasharray="4 8" />
-              <circle cx="100" cy="100" r="70" stroke="hsl(160 84% 55% / 0.5)" className="origin-center animate-spin-reverse" style={{ transformOrigin: "100px 100px" }} strokeDasharray="2 6" />
-              <circle cx="100" cy="100" r="50" stroke="hsl(160 84% 39% / 0.7)" />
-              <polygon points="100,55 145,145 55,145" stroke="hsl(160 84% 55%)" className="origin-center animate-spin-slow" style={{ transformOrigin: "100px 100px" }} />
-              <circle cx="100" cy="100" r="6" fill="hsl(160 84% 55%)" stroke="none" />
-            </g>
-          </svg>
+          <div className="rounded-2xl border border-border bg-surface/80 backdrop-blur-sm shadow-glow overflow-hidden">
+            <div className="flex items-center gap-1.5 border-b border-border px-4 py-2.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-muted" />
+              <span className="h-2.5 w-2.5 rounded-full bg-muted" />
+              <span className="h-2.5 w-2.5 rounded-full bg-muted" />
+              <span className="ml-3 font-mono text-xs text-muted-foreground">~/portfolio · about.ts</span>
+            </div>
+            <pre className="px-5 py-4 font-mono text-[13px] leading-relaxed text-muted-foreground">
+{`const me = {
+  name: "Christian Reston",
+  role: `}<span className="text-primary">"Product Engineer"</span>{`,
+  stack: [`}<span className="text-foreground">"TS"</span>{`, `}<span className="text-foreground">"React"</span>{`, `}<span className="text-foreground">"Node"</span>{`],
+  shipping: `}<span className="text-primary">true</span>{`,
+};`}
+            </pre>
+          </div>
         </motion.div>
       </div>
 

@@ -9,10 +9,10 @@ const stack = [
   "Tailwind CSS",
 ];
 
-const stats = [
-  { value: "0", label: "Years Experience" },
-  { value: "1", label: "Projects Shipped" },
-  { value: "N/A", label: "Happy Clients" },
+const currently = [
+  { label: "Building", value: "Dreflow — canvas + video studio" },
+  { label: "Learning", value: "WebGL & rendering performance" },
+  { label: "Based in", value: "Cebu, Philippines" },
 ];
 
 export function BentoSection() {
@@ -57,12 +57,12 @@ export function BentoSection() {
         </article>
 
         <article className="rounded-2xl border border-border bg-surface p-6 shadow-glow transition-smooth hover:border-primary/50">
-          <h3 className="text-lg font-semibold text-foreground">Quick Stats</h3>
-          <ul className="mt-4 space-y-3">
-            {stats.map((s) => (
-              <li key={s.label} className="flex items-baseline justify-between gap-4">
-                <span className="text-2xl font-black text-primary">{s.value}</span>
-                <span className="text-sm text-muted-foreground">{s.label}</span>
+          <h3 className="text-lg font-semibold text-foreground">Currently</h3>
+          <ul className="mt-4 space-y-4">
+            {currently.map((s) => (
+              <li key={s.label}>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">{s.label}</p>
+                <p className="mt-1 text-sm font-medium text-foreground">{s.value}</p>
               </li>
             ))}
           </ul>
