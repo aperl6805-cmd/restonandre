@@ -10,9 +10,9 @@ const stack = [
 ];
 
 const stats = [
-  { value: "3+", label: "Years Experience" },
-  { value: "14+", label: "Projects Shipped" },
-  { value: "5+", label: "Happy Clients" },
+  { value: "0", label: "Years Experience" },
+  { value: "1", label: "Projects Shipped" },
+  { value: "N/A", label: "Happy Clients" },
 ];
 
 export function BentoSection() {
