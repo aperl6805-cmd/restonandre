@@ -12,14 +12,49 @@ type Education = {
 
 const education: Education[] = [
   {
-    school: "Your University",
-    degree: "B.S. in Computer Science",
-    location: "City, Country",
-    period: "20XX — 20XX",
+    school: "St. Cecilia's College — Cebu, Inc.",
+    degree: "College",
+    location: "Cebu, Philippines",
+    period: "Present",
     highlights: [
-      "Relevant coursework: Data Structures, Algorithms, Web Development, Databases.",
-      "Built capstone project recognized by the department for engineering quality.",
-      "Active member of the developer community / coding club.",
+      "Pursuing higher education with a focus on software development and computing fundamentals.",
+      "Building real-world projects such as Dreflow alongside coursework.",
+    ],
+  },
+  {
+    school: "St. Cecilia's College — Cebu, Inc.",
+    degree: "Senior High School",
+    location: "Cebu, Philippines",
+    period: "Completed",
+    highlights: [
+      "Completed senior high school track, strengthening foundations in research and problem solving.",
+    ],
+  },
+  {
+    school: "Tulay National High School",
+    degree: "Junior High School",
+    location: "Cebu, Philippines",
+    period: "Completed",
+    highlights: [
+      "Completed junior high school education.",
+    ],
+  },
+  {
+    school: "Minglanilla Central School",
+    degree: "Elementary (Intermediate)",
+    location: "Minglanilla, Cebu, Philippines",
+    period: "Completed",
+    highlights: [
+      "Completed intermediate elementary education.",
+    ],
+  },
+  {
+    school: "Bacay Elementary School",
+    degree: "Elementary (Primary)",
+    location: "Cebu, Philippines",
+    period: "Completed",
+    highlights: [
+      "Completed primary elementary education.",
     ],
   },
 ];
