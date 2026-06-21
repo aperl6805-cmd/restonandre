@@ -14,34 +14,14 @@ type Project = {
 
 const projects: Project[] = [
   {
-    name: "DevTrack",
-    tagline: "Project management dashboard",
+    name: "Dreflow",
+    tagline: "Web application",
     description:
-      "A streamlined dashboard for engineering teams to plan sprints, track issues, and visualize delivery in real time.",
-    tech: ["React", "Node.js", "PostgreSQL"],
+      "A web application built and deployed on Netlify.",
+    tech: ["React", "TypeScript", "Tailwind"],
     gradient: "bg-gradient-card-1",
     github: "#",
-    live: "#",
-  },
-  {
-    name: "ShopWave",
-    tagline: "E-commerce storefront",
-    description:
-      "A fast, SEO-friendly storefront with server-rendered product pages, Stripe checkout, and a custom CMS.",
-    tech: ["Next.js", "Stripe", "Tailwind"],
-    gradient: "bg-gradient-card-2",
-    github: "#",
-    live: "#",
-  },
-  {
-    name: "ChatFlow",
-    tagline: "Real-time chat application",
-    description:
-      "Group and direct messaging with typing indicators, read receipts, and end-to-end persistence on a Socket.io core.",
-    tech: ["React", "Socket.io", "Express"],
-    gradient: "bg-gradient-card-3",
-    github: "#",
-    live: "#",
+    live: "https://dreflow.netlify.app/",
   },
 ];
 
