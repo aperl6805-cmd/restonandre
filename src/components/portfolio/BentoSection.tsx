@@ -9,10 +9,10 @@ const stack = [
   "Tailwind CSS",
 ];
 
-const stats = [
-  { value: "0", label: "Years Experience" },
-  { value: "1", label: "Projects Shipped" },
-  { value: "N/A", label: "Happy Clients" },
+const currently = [
+  { label: "Building", value: "Dreflow — canvas + video studio" },
+  { label: "Learning", value: "WebGL & rendering performance" },
+  { label: "Based in", value: "Cebu, Philippines" },
 ];
 
 export function BentoSection() {
