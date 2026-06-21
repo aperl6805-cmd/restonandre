@@ -1,6 +1,8 @@
+import { useRef, type MouseEvent } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "./Reveal";
 
 type Project = {
   name: string;
@@ -16,8 +18,7 @@ const projects: Project[] = [
   {
     name: "Dreflow",
     tagline: "Web application",
-    description:
-      "A web application built and deployed on Netlify.",
+    description: "A web application built and deployed on Netlify.",
     tech: ["React", "TypeScript", "Tailwind"],
     gradient: "bg-gradient-card-1",
     github: "#",
@@ -25,68 +26,98 @@ const projects: Project[] = [
   },
 ];
 
+function SpotlightCard({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLElement>(null);
+  const onMove = (e: MouseEvent<HTMLElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  };
+  return (
+    <article
+      ref={ref}
+      onMouseMove={onMove}
+      className={`group relative overflow-hidden rounded-2xl border border-border bg-surface p-5 transition-smooth hover:border-primary/60 hover:shadow-glow ${className ?? ""}`}
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(380px circle at var(--mx) var(--my), hsl(var(--primary) / 0.15), transparent 60%)",
+        }}
+      />
+      <div className="relative">{children}</div>
+    </article>
+  );
+}
+
 export function ProjectsSection() {
   return (
     <section id="projects" className="border-y border-border bg-surface/30">
       <div className="mx-auto max-w-6xl px-6 py-24">
-        <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary">Selected Work</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">Recent Projects</h2>
+        <Reveal>
+          <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary">Selected Work</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">Recent Projects</h2>
+            </div>
+            <p className="max-w-sm text-sm text-muted-foreground">
+              A small selection of products I've designed, built, or rescued in the
+              past couple of years.
+            </p>
           </div>
-          <p className="max-w-sm text-sm text-muted-foreground">
-            A small selection of products I've designed, built, or rescued in the
-            past couple of years.
-          </p>
-        </div>
+        </Reveal>
 
         <div className="grid gap-6 md:grid-cols-2">
           {projects.map((p, i) => (
-            <article
-              key={p.name}
-              className={`group rounded-2xl border border-border bg-surface p-5 transition-smooth hover:border-primary/60 hover:shadow-glow ${
-                i === 0 ? "md:row-span-2" : ""
-              }`}
-            >
-              <div className={`${p.gradient} relative mb-5 flex aspect-[16/10] items-end overflow-hidden rounded-xl p-5`}>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_60%)]" />
-                <span className="relative font-mono text-xs uppercase tracking-widest text-background/80">
-                  {String(i + 1).padStart(2, "0")} / {p.tagline}
-                </span>
-              </div>
-
-              <div className="flex items-start justify-between gap-3">
-                <h3 className="text-xl font-bold text-foreground">{p.name}</h3>
-                <div className="flex gap-1">
-                  <Button asChild variant="ghost" size="icon" className="h-8 w-8 hover:text-primary">
-                    <a href={p.github} aria-label={`${p.name} on GitHub`}>
-                      <Github className="h-4 w-4" />
-                    </a>
-                  </Button>
-                  <Button asChild variant="ghost" size="icon" className="h-8 w-8 hover:text-primary">
-                    <a href={p.live} aria-label={`${p.name} live demo`}>
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  </Button>
+            <Reveal key={p.name} delay={i * 0.1} className={i === 0 ? "md:row-span-2" : ""}>
+              <SpotlightCard className="h-full">
+                <div className={`${p.gradient} relative mb-5 flex aspect-[16/10] items-end overflow-hidden rounded-xl p-5`}>
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_60%)]" />
+                  <span className="relative font-mono text-xs uppercase tracking-widest text-background/80">
+                    {String(i + 1).padStart(2, "0")} / {p.tagline}
+                  </span>
                 </div>
-              </div>
 
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {p.description}
-              </p>
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-xl font-bold text-foreground">{p.name}</h3>
+                  <div className="flex gap-1">
+                    <Button asChild variant="ghost" size="icon" className="h-8 w-8 hover:text-primary">
+                      <a href={p.github} aria-label={`${p.name} on GitHub`}>
+                        <Github className="h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button asChild variant="ghost" size="icon" className="h-8 w-8 hover:text-primary">
+                      <a
+                        href={p.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${p.name} live demo`}
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                {p.tech.map((t) => (
-                  <Badge
-                    key={t}
-                    variant="outline"
-                    className="border-border bg-background/40 text-muted-foreground"
-                  >
-                    {t}
-                  </Badge>
-                ))}
-              </div>
-            </article>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {p.tech.map((t) => (
+                    <Badge
+                      key={t}
+                      variant="outline"
+                      className="border-border bg-background/40 text-muted-foreground"
+                    >
+                      {t}
+                    </Badge>
+                  ))}
+                </div>
+              </SpotlightCard>
+            </Reveal>
           ))}
         </div>
       </div>

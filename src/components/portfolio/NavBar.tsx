@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Command, Menu, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -9,12 +9,14 @@ const navLinks = [
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
 
 export function NavBar() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [open, setOpen] = useState(false);
+  const [isMac, setIsMac] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -22,7 +24,22 @@ export function NavBar() {
     root.classList.add(theme);
   }, [theme]);
 
+  useEffect(() => {
+    setIsMac(/Mac|iPhone|iPad|iPod/.test(navigator.platform));
+  }, []);
+
   const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+
+  const openPalette = () => {
+    window.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "k",
+        metaKey: isMac,
+        ctrlKey: !isMac,
+        bubbles: true,
+      }),
+    );
+  };
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-md">
@@ -45,6 +62,15 @@ export function NavBar() {
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={openPalette}
+            aria-label="Open command palette"
+            className="hidden items-center gap-2 rounded-md border border-border bg-surface px-2.5 py-1.5 text-xs text-muted-foreground transition-smooth hover:border-primary/60 hover:text-primary md:inline-flex"
+          >
+            <Command className="h-3.5 w-3.5" />
+            <kbd className="font-mono">{isMac ? "⌘" : "Ctrl"} K</kbd>
+          </button>
+
           <Button
             variant="ghost"
             size="icon"
