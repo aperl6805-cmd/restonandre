@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "./Reveal";
 
-const EMAIL = "christian.reston@example.com";
+const EMAIL = "restonchris9@gmail.com";
 
 export function FooterSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });

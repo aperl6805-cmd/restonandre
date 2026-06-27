@@ -3,7 +3,7 @@ import { NavBar } from "@/components/portfolio/NavBar";
 import { HeroSection } from "@/components/portfolio/HeroSection";
 import { BentoSection } from "@/components/portfolio/BentoSection";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
-import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
+
 import { EducationSection } from "@/components/portfolio/EducationSection";
 import { FooterSection } from "@/components/portfolio/FooterSection";
 import { CommandPalette } from "@/components/portfolio/CommandPalette";
@@ -65,7 +65,7 @@ function Index() {
         <HeroSection />
         <BentoSection />
         <ProjectsSection />
-        <ExperienceSection />
+        
         <EducationSection />
       </main>
       <FooterSection />
