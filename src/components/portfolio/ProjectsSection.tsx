@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
 import dreflowPreview from "@/assets/dreflow-preview.png";
+import andioPreview from "@/assets/andio-preview.png";
 
 type Project = {
   name: string;
@@ -26,7 +27,18 @@ const projects: Project[] = [
     github: "#",
     live: "https://dreflow.netlify.app/",
   },
+  {
+    name: "Andio",
+    tagline: "Multi-track web DAW",
+    description:
+      "A high-performance, browser-based DAW with an arranger timeline, precision piano roll, and polyphonic synth engine. Engineered low-latency scheduling on the Web Audio API across drums, bass, piano, and synth channels, plus a custom grid-coordinate system for note painting, dragging, and resizing. Refactored snapping math to eliminate sub-pixel gaps and overlapping inserts while holding 60fps during playback.",
+    tech: ["React", "TypeScript", "Web Audio API", "Tone.js", "Tailwind"],
+    image: andioPreview,
+    github: "#",
+    live: "https://andio-sage.vercel.app/",
+  },
 ];
+
 
 function SpotlightCard({ children, className }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLElement>(null);
