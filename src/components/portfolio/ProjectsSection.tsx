@@ -4,7 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
 import dreflowPreview from "@/assets/dreflow-preview.png";
-import andioPreview from "@/assets/andio-preview.png";
+import andioPreviewAsset from "@/assets/andio-preview-new.png.asset.json";
+import andioLogo from "@/assets/andio-logo.png.asset.json";
+import dreflowLogo from "@/assets/dreflow-logo.png.asset.json";
 
 type Project = {
   name: string;
@@ -12,6 +14,7 @@ type Project = {
   description: string;
   tech: string[];
   image: string;
+  logo?: string;
   github: string;
   live: string;
 };
@@ -24,6 +27,7 @@ const projects: Project[] = [
       "Built a browser-based canvas and video editor on top of the HTML5 Canvas API with a custom scene-graph and immutable state store. Solved real-time preview bottlenecks by batching renders via requestAnimationFrame and offloading heavy frame work to Web Workers, keeping interactions at 60fps under multi-layer compositions.",
     tech: ["React", "TypeScript", "Canvas API", "Web Workers", "Tailwind"],
     image: dreflowPreview,
+    logo: dreflowLogo.url,
     github: "#",
     live: "https://dreflow.netlify.app/",
   },
@@ -33,7 +37,8 @@ const projects: Project[] = [
     description:
       "A high-performance, browser-based DAW with an arranger timeline, precision piano roll, and polyphonic synth engine. Engineered low-latency scheduling on the Web Audio API across drums, bass, piano, and synth channels, plus a custom grid-coordinate system for note painting, dragging, and resizing. Refactored snapping math to eliminate sub-pixel gaps and overlapping inserts while holding 60fps during playback.",
     tech: ["React", "TypeScript", "Web Audio API", "Tone.js", "Tailwind"],
-    image: andioPreview,
+    image: andioPreviewAsset.url,
+    logo: andioLogo.url,
     github: "#",
     live: "https://andio-sage.vercel.app/",
   },
