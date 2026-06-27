@@ -9,7 +9,6 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 import {
-  Briefcase,
   Code2,
   Copy,
   ExternalLink,
@@ -22,7 +21,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 
-const EMAIL = "christian.reston@example.com";
+const EMAIL = "restonchris9@gmail.com";
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
@@ -77,9 +76,6 @@ export function CommandPalette() {
           </CommandItem>
           <CommandItem onSelect={() => go("#projects")}>
             <Code2 className="mr-2 h-4 w-4" /> Projects
-          </CommandItem>
-          <CommandItem onSelect={() => go("#experience")}>
-            <Briefcase className="mr-2 h-4 w-4" /> Experience
           </CommandItem>
           <CommandItem onSelect={() => go("#education")}>
             <GraduationCap className="mr-2 h-4 w-4" /> Education
