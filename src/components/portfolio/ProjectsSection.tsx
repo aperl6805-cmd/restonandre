@@ -108,7 +108,16 @@ export function ProjectsSection() {
                 </div>
 
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-xl font-bold text-foreground">{p.name}</h3>
+                  <div className="flex items-center gap-2.5">
+                    {p.logo && (
+                      <img
+                        src={p.logo}
+                        alt={`${p.name} logo`}
+                        className="h-8 w-8 rounded-md object-cover ring-1 ring-border"
+                      />
+                    )}
+                    <h3 className="text-xl font-bold text-foreground">{p.name}</h3>
+                  </div>
                   <div className="flex gap-1">
                     <Button asChild variant="ghost" size="icon" className="h-8 w-8 hover:text-primary">
                       <a href={p.github} aria-label={`${p.name} on GitHub`}>
