@@ -7,6 +7,8 @@ import dreflowPreview from "@/assets/dreflow-preview.png";
 import andioPreviewAsset from "@/assets/andio-preview-new.png.asset.json";
 import andioLogo from "@/assets/andio-logo.png.asset.json";
 import dreflowLogo from "@/assets/dreflow-logo.png.asset.json";
+import ancrestPreviewAsset from "@/assets/ancrest-preview.png.asset.json";
+import ancrestLogo from "@/assets/ancrest-logo.png.asset.json";
 
 type Project = {
   name: string;
@@ -41,6 +43,17 @@ const projects: Project[] = [
     logo: andioLogo.url,
     github: "#",
     live: "https://andio-sage.vercel.app/",
+  },
+  {
+    name: "Ancrest",
+    tagline: "Visual logic & API orchestration studio",
+    description:
+      "A full-stack, node-based automation workspace designed for orchestrating modular API pipelines. Built a custom coordinate-tracking matrix that dynamically renders fluid SVG Bezier graph connections in real-time as users manipulate elements on an infinite panning grid. Engineered strict directional data-flow validation guards to block cyclical loops, backed by a deterministic JSONB execution store in Supabase to sync states seamlessly. Features a step-by-step visual automation simulator with a live syntax-highlighted data payload console.",
+    tech: ["React", "TypeScript", "Supabase", "SVG Bezier Curves", "Tailwind"],
+    image: ancrestPreviewAsset.url,
+    logo: ancrestLogo.url,
+    github: "#",
+    live: "https://ancrest.vercel.app/",
   },
 ];
 
@@ -90,9 +103,9 @@ export function ProjectsSection() {
           </div>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-3">
           {projects.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.1} className={i === 0 ? "md:row-span-2" : ""}>
+            <Reveal key={p.name} delay={i * 0.1}>
               <SpotlightCard className="h-full">
                 <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-border">
                   <img
