@@ -103,9 +103,9 @@ export function ProjectsSection() {
           </div>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-3">
           {projects.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.1} className={i === 0 ? "md:row-span-2" : ""}>
+            <Reveal key={p.name} delay={i * 0.1}>
               <SpotlightCard className="h-full">
                 <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-border">
                   <img
