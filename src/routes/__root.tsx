@@ -82,6 +82,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Christian Andre C. Reston — Software Developer" },
       { name: "author", content: "Christian Andre C. Reston" },
       { property: "og:site_name", content: "Christian Andre C. Reston" },
+      { property: "og:title", content: "Christian Andre C. Reston — Software Developer" },
+      { name: "twitter:title", content: "Christian Andre C. Reston — Software Developer" },
+      { name: "description", content: "A developer portfolio showcasing projects, experience, and skills with a customizable dark/light theme." },
+      { property: "og:description", content: "A developer portfolio showcasing projects, experience, and skills with a customizable dark/light theme." },
+      { name: "twitter:description", content: "A developer portfolio showcasing projects, experience, and skills with a customizable dark/light theme." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5a583442-9319-4f9f-a3d1-bcb04cbce782/id-preview-924add5b--ee6fd945-0ab6-4a91-bb19-05ae3fc9dee0.lovable.app-1782628949353.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5a583442-9319-4f9f-a3d1-bcb04cbce782/id-preview-924add5b--ee6fd945-0ab6-4a91-bb19-05ae3fc9dee0.lovable.app-1782628949353.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:type", content: "website" },
     ],
     links: [
       {
