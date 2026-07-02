@@ -116,7 +116,7 @@ export function ProjectsSection() {
           </div>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {projects.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.1}>
               <SpotlightCard className="h-full">
