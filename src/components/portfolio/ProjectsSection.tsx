@@ -57,6 +57,26 @@ const projects: Project[] = [
     github: "#",
     live: "https://ancrest.vercel.app/",
   },
+  {
+    name: "Repodre",
+    tagline: "Interactive codebase graph",
+    description:
+      "An interactive, browser-based static analysis platform designed to turn complex GitHub repositories into live visual execution flow diagrams and database blueprints. Engineered a client-side Abstract Syntax Tree (AST) parsing engine to extract dependencies locally in milliseconds with zero backend server overhead. Built an infinite panning canvas featuring Crow's Foot notation ERD rendering and multi-engine SQL export utilities, backed by a real-time state hydration layer in Supabase to stream and store canvas layout metadata with strict Row Level Security (RLS).",
+    tech: ["React", "TypeScript", "Supabase", "AST Parsing", "Tailwind"],
+    image: repodrePreviewAsset.url,
+    logo: repodreLogo.url,
+    github: "#",
+    live: "https://repodre.netlify.app/",
+  },
+    tagline: "Visual logic & API orchestration studio",
+    description:
+      "A full-stack, node-based automation workspace designed for orchestrating modular API pipelines. Built a custom coordinate-tracking matrix that dynamically renders fluid SVG Bezier graph connections in real-time as users manipulate elements on an infinite panning grid. Engineered strict directional data-flow validation guards to block cyclical loops, backed by a deterministic JSONB execution store in Supabase to sync states seamlessly. Features a step-by-step visual automation simulator with a live syntax-highlighted data payload console.",
+    tech: ["React", "TypeScript", "Supabase", "SVG Bezier Curves", "Tailwind"],
+    image: ancrestPreviewAsset.url,
+    logo: ancrestLogo.url,
+    github: "#",
+    live: "https://ancrest.vercel.app/",
+  },
 ];
 
 
