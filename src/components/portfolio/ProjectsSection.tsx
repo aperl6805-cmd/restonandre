@@ -9,6 +9,8 @@ import andioLogo from "@/assets/andio-logo.png.asset.json";
 import dreflowLogo from "@/assets/dreflow-logo.png.asset.json";
 import ancrestPreviewAsset from "@/assets/ancrest-preview.png.asset.json";
 import ancrestLogo from "@/assets/ancrest-logo.png.asset.json";
+import repodrePreviewAsset from "@/assets/repodre-preview.png.asset.json";
+import repodreLogo from "@/assets/repodre-logo.png.asset.json";
 
 type Project = {
   name: string;
@@ -54,6 +56,17 @@ const projects: Project[] = [
     logo: ancrestLogo.url,
     github: "#",
     live: "https://ancrest.vercel.app/",
+  },
+  {
+    name: "Repodre",
+    tagline: "Interactive codebase graph",
+    description:
+      "An interactive, browser-based static analysis platform designed to turn complex GitHub repositories into live visual execution flow diagrams and database blueprints. Engineered a client-side Abstract Syntax Tree (AST) parsing engine to extract dependencies locally in milliseconds with zero backend server overhead. Built an infinite panning canvas featuring Crow's Foot notation ERD rendering and multi-engine SQL export utilities, backed by a real-time state hydration layer in Supabase to stream and store canvas layout metadata with strict Row Level Security (RLS).",
+    tech: ["React", "TypeScript", "Supabase", "AST Parsing", "Tailwind"],
+    image: repodrePreviewAsset.url,
+    logo: repodreLogo.url,
+    github: "#",
+    live: "https://repodre.netlify.app/",
   },
 ];
 
@@ -103,7 +116,7 @@ export function ProjectsSection() {
           </div>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {projects.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.1}>
               <SpotlightCard className="h-full">
