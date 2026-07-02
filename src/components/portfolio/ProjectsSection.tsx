@@ -9,6 +9,8 @@ import andioLogo from "@/assets/andio-logo.png.asset.json";
 import dreflowLogo from "@/assets/dreflow-logo.png.asset.json";
 import ancrestPreviewAsset from "@/assets/ancrest-preview.png.asset.json";
 import ancrestLogo from "@/assets/ancrest-logo.png.asset.json";
+import repodrePreviewAsset from "@/assets/repodre-preview.png.asset.json";
+import repodreLogo from "@/assets/repodre-logo.png.asset.json";
 
 type Project = {
   name: string;
