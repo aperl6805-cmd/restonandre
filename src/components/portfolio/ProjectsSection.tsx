@@ -3,7 +3,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
-import dreflowPreview from "@/assets/dreflow-preview.png";
+import dreflowPreviewAsset from "@/assets/dreflow-preview-new.png.asset.json";
 import andioPreviewAsset from "@/assets/andio-preview-new.png.asset.json";
 import andioLogo from "@/assets/andio-logo.png.asset.json";
 import dreflowLogo from "@/assets/dreflow-logo.png.asset.json";
