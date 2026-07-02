@@ -3,7 +3,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
-import dreflowPreview from "@/assets/dreflow-preview.png";
+import dreflowPreviewAsset from "@/assets/dreflow-preview-new.png.asset.json";
 import andioPreviewAsset from "@/assets/andio-preview-new.png.asset.json";
 import andioLogo from "@/assets/andio-logo.png.asset.json";
 import dreflowLogo from "@/assets/dreflow-logo.png.asset.json";
@@ -28,7 +28,7 @@ const projects: Project[] = [
     description:
       "Built a browser-based canvas and video editor on top of the HTML5 Canvas API with a custom scene-graph and immutable state store. Solved real-time preview bottlenecks by batching renders via requestAnimationFrame and offloading heavy frame work to Web Workers, keeping interactions at 60fps under multi-layer compositions.",
     tech: ["React", "TypeScript", "Canvas API", "Web Workers", "Tailwind"],
-    image: dreflowPreview,
+    image: dreflowPreviewAsset.url,
     logo: dreflowLogo.url,
     github: "#",
     live: "https://dreflow.netlify.app/",
