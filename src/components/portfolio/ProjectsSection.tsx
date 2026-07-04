@@ -66,7 +66,7 @@ const projects: Project[] = [
     image: repodrePreviewAsset.url,
     logo: repodreLogo.url,
     github: "#",
-    live: "https://repodre.netlify.app/",
+    live: "https://repodre.vercel.app/",
   },
 ];
 
