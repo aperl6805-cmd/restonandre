@@ -1,24 +1,44 @@
 import { useState } from "react";
-import { Copy, Github, Linkedin, Send, Twitter } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import confetti from "canvas-confetti";
+import { Check, Copy, Github, Linkedin, Send, Twitter } from "lucide-react";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
+import { MagneticButton } from "./MagneticButton";
+import { uiSound } from "./SoundToggle";
 
 const EMAIL = "restonchris9@gmail.com";
 
 export function FooterSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      uiSound.success();
+      setTimeout(() => setCopied(false), 2000);
       toast.success("Email copied to clipboard");
     } catch {
       toast.error("Couldn't copy — try selecting the address");
     }
+  };
+
+  const celebrate = () => {
+    confetti({
+      particleCount: 90,
+      spread: 70,
+      startVelocity: 34,
+      scalar: 0.9,
+      origin: { y: 0.75 },
+      colors: ["#10b981", "#34d399", "#f8fafc"],
+    });
   };
 
   const onSubmit = (e: React.FormEvent) => {
@@ -33,8 +53,13 @@ export function FooterSection() {
     }
     const subject = encodeURIComponent(`Portfolio message from ${form.name}`);
     const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`);
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-    toast.success("Opening your email client…");
+    setSent(true);
+    uiSound.success();
+    celebrate();
+    setTimeout(() => {
+      window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+    }, 700);
+    setTimeout(() => setSent(false), 4000);
   };
 
   return (
@@ -59,13 +84,18 @@ export function FooterSection() {
                 <p className="mt-2 text-sm text-muted-foreground">
                   Prefer email? Tap to copy and I'll get back within a day or two.
                 </p>
-                <Button
+                <MagneticButton
+                  onMouseEnter={uiSound.hover}
                   onClick={copyEmail}
-                  className="mt-6 w-full bg-primary text-primary-foreground hover:bg-primary-glow shadow-glow"
+                  className="mt-6 inline-flex h-11 w-full items-center justify-center rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-glow transition-colors hover:bg-primary-glow"
                 >
-                  <Copy className="mr-2 h-4 w-4" />
-                  {EMAIL}
-                </Button>
+                  {copied ? (
+                    <Check className="mr-2 h-4 w-4" />
+                  ) : (
+                    <Copy className="mr-2 h-4 w-4" />
+                  )}
+                  {copied ? "Copied!" : EMAIL}
+                </MagneticButton>
               </div>
 
               <div className="mt-8">
@@ -83,6 +113,7 @@ export function FooterSection() {
                       asChild
                       variant="outline"
                       size="icon"
+                      onMouseEnter={uiSound.hover}
                       className="rounded-full border-border bg-background hover:border-primary/60 hover:text-primary"
                     >
                       <a href={href} aria-label={label}>
@@ -98,7 +129,7 @@ export function FooterSection() {
           <Reveal delay={0.1}>
             <form
               onSubmit={onSubmit}
-              className="rounded-2xl border border-border bg-surface p-6 shadow-glow"
+              className="relative overflow-hidden rounded-2xl border border-border bg-surface p-6 shadow-glow"
             >
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
@@ -134,12 +165,43 @@ export function FooterSection() {
                   className="mt-2 resize-none"
                 />
               </div>
-              <Button
+
+              <MagneticButton
                 type="submit"
-                className="mt-5 w-full bg-primary text-primary-foreground hover:bg-primary-glow"
+                onMouseEnter={uiSound.hover}
+                className="relative mt-5 inline-flex h-11 w-full items-center justify-center overflow-hidden rounded-xl bg-primary text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-glow"
               >
-                <Send className="mr-2 h-4 w-4" /> Send message
-              </Button>
+                <AnimatePresence mode="wait" initial={false}>
+                  {sent ? (
+                    <motion.span
+                      key="sent"
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.6 }}
+                      className="inline-flex items-center"
+                    >
+                      <motion.span
+                        initial={{ rotate: -20, x: -6 }}
+                        animate={{ rotate: 0, x: 0 }}
+                        className="mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary-foreground/20"
+                      >
+                        <Check className="h-3.5 w-3.5" />
+                      </motion.span>
+                      Message on its way
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="idle"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0, x: 40 }}
+                      className="inline-flex items-center"
+                    >
+                      <Send className="mr-2 h-4 w-4" /> Send message
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </MagneticButton>
             </form>
           </Reveal>
         </div>
