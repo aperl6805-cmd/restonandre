@@ -10,6 +10,8 @@ import { FooterSection } from "@/components/portfolio/FooterSection";
 import { CommandPalette } from "@/components/portfolio/CommandPalette";
 import { ScrollProgress } from "@/components/portfolio/ScrollProgress";
 import { BackToTop } from "@/components/portfolio/BackToTop";
+import { SoundToggle } from "@/components/portfolio/SoundToggle";
+import { SkillHighlightProvider } from "@/components/portfolio/SkillHighlight";
 import ogImage from "@/assets/og-image.jpg";
 
 export const Route = createFileRoute("/")({
@@ -58,19 +60,22 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <NavBar />
-      <ScrollProgress />
-      <CommandPalette />
-      <main>
-        <HeroSection />
-        <BentoSection />
-        <ProjectsSection />
-        <NowCreatingSection />
-        <EducationSection />
-      </main>
-      <FooterSection />
-      <BackToTop />
-    </div>
+    <SkillHighlightProvider>
+      <div className="min-h-screen bg-background text-foreground">
+        <NavBar />
+        <ScrollProgress />
+        <CommandPalette />
+        <main>
+          <HeroSection />
+          <BentoSection />
+          <ProjectsSection />
+          <NowCreatingSection />
+          <EducationSection />
+        </main>
+        <FooterSection />
+        <BackToTop />
+        <SoundToggle />
+      </div>
+    </SkillHighlightProvider>
   );
 }
