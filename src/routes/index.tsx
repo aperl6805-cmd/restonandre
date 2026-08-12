@@ -71,6 +71,7 @@ function Index() {
           <BentoSection />
           <ProjectsSection />
           <NowCreatingSection />
+          <LabSection />
           <EducationSection />
         </main>
         <FooterSection />
