@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/portfolio/HeroSection";
 import { BentoSection } from "@/components/portfolio/BentoSection";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
 import { NowCreatingSection } from "@/components/portfolio/NowCreatingSection";
+import { LabSection } from "@/components/portfolio/LabSection";
 
 import { EducationSection } from "@/components/portfolio/EducationSection";
 import { FooterSection } from "@/components/portfolio/FooterSection";
