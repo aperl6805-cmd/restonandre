@@ -122,7 +122,7 @@ export function ConstellationCursor() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < MAX_DIST) {
             const alpha = (1 - dist / MAX_DIST) * Math.min(a.alpha, b.alpha) * 0.6;
-            ctx.strokeStyle = `rgba(140, 180, 255, ${alpha})`;
+            ctx.strokeStyle = `hsla(160, 84%, 55%, ${alpha})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -135,18 +135,19 @@ export function ConstellationCursor() {
       points.forEach((p) => {
         const twinkle = 0.7 + 0.3 * Math.sin(p.age * 0.2 + p.twinklePhase);
         const alpha = p.alpha * twinkle;
-        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 4);
-        grad.addColorStop(0, `rgba(200, 220, 255, ${alpha})`);
-        grad.addColorStop(1, "rgba(200, 220, 255, 0)");
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius * 4, 0, Math.PI * 2);
-        ctx.fill();
+        const size = p.radius * 5;
 
-        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.twinklePhase);
+        ctx.font = `${Math.round(size)}px ui-monospace, SFMono-Regular, Menlo, monospace`;
+        ctx.fillStyle = `hsla(160, 84%, 55%, ${alpha})`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.shadowColor = `hsla(160, 84%, 55%, ${alpha})`;
+        ctx.shadowBlur = 8;
+        ctx.fillText("*", 0, 0);
+        ctx.restore();
       });
 
       raf = requestAnimationFrame(animate);
