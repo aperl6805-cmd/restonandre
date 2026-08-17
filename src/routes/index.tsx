@@ -69,6 +69,7 @@ function Index() {
         <div className="hidden md:block">
           <CustomCursor />
         </div>
+        <ConstellationCursor />
         <NavBar />
         <ScrollProgress />
         <CommandPalette />
