@@ -81,12 +81,19 @@
   html {
     scroll-behavior: smooth;
   }
+  html.cursor-none {
+    cursor: none;
+  }
+  html.cursor-none * {
+    cursor: none !important;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   }
 }
+
 
 @utility shadow-glow {
   box-shadow: var(--shadow-glow);
