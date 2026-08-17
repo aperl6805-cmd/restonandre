@@ -13,6 +13,7 @@ import { ScrollProgress } from "@/components/portfolio/ScrollProgress";
 import { BackToTop } from "@/components/portfolio/BackToTop";
 import { SoundToggle } from "@/components/portfolio/SoundToggle";
 import { CustomCursor } from "@/components/portfolio/CustomCursor";
+import { ConstellationCursor } from "@/components/portfolio/ConstellationCursor";
 import { SkillHighlightProvider } from "@/components/portfolio/SkillHighlight";
 
 import ogImage from "@/assets/og-image.jpg";
