@@ -12,7 +12,9 @@ import { CommandPalette } from "@/components/portfolio/CommandPalette";
 import { ScrollProgress } from "@/components/portfolio/ScrollProgress";
 import { BackToTop } from "@/components/portfolio/BackToTop";
 import { SoundToggle } from "@/components/portfolio/SoundToggle";
+import { CustomCursor } from "@/components/portfolio/CustomCursor";
 import { SkillHighlightProvider } from "@/components/portfolio/SkillHighlight";
+
 import ogImage from "@/assets/og-image.jpg";
 
 export const Route = createFileRoute("/")({
