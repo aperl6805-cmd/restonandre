@@ -63,6 +63,9 @@ function Index() {
   return (
     <SkillHighlightProvider>
       <div className="min-h-screen bg-background text-foreground">
+        <div className="hidden md:block">
+          <CustomCursor />
+        </div>
         <NavBar />
         <ScrollProgress />
         <CommandPalette />
@@ -81,3 +84,4 @@ function Index() {
     </SkillHighlightProvider>
   );
 }
+
