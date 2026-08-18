@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Palette } from "lucide-react";
+import { Palette, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "accent-hsl";
@@ -137,9 +137,18 @@ export function AccentPicker() {
     <div className="fixed bottom-20 left-6 z-[99]">
       {open && (
         <div className="mb-3 w-64 rounded-2xl border border-border bg-surface/95 p-4 shadow-glow backdrop-blur-xl">
-          <p className="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            Accent color
-          </p>
+          <div className="mb-3 flex items-center justify-between">
+            <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              Accent color
+            </p>
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close accent picker"
+              className="rounded-md p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
           <canvas
             ref={canvasRef}
             width={220}
