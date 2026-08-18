@@ -4,6 +4,13 @@ import { useSkillHighlight } from "./SkillHighlight";
 import { uiSound } from "./SoundToggle";
 import { Reveal } from "./Reveal";
 
+import tsAsset from "@/assets/skill-typescript.png.asset.json";
+import reactAsset from "@/assets/skill-react.png.asset.json";
+import pgAsset from "@/assets/skill-postgresql.png.asset.json";
+import canvasAsset from "@/assets/skill-canvas.png.asset.json";
+import audioAsset from "@/assets/skill-webaudio.png.asset.json";
+import tailwindAsset from "@/assets/skill-tailwind.png.asset.json";
+
 const skills = [
   "TypeScript",
   "React",
@@ -14,6 +21,15 @@ const skills = [
   "Web Audio",
   "Tailwind",
 ];
+
+const skillLogos: Record<string, string> = {
+  TypeScript: tsAsset.url,
+  React: reactAsset.url,
+  PostgreSQL: pgAsset.url,
+  Canvas: canvasAsset.url,
+  "Web Audio": audioAsset.url,
+  Tailwind: tailwindAsset.url,
+};
 
 // Radial constellation coordinates (percent of the box)
 const nodes = skills.map((name, i) => {
@@ -107,7 +123,19 @@ export function BentoSection() {
                 ))}
               </svg>
 
-              <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary shadow-glow" />
+              {active && skillLogos[active] ? (
+                <motion.img
+                  key={active}
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  src={skillLogos[active]}
+                  alt={`${active} logo`}
+                  className="absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-lg"
+                />
+              ) : (
+                <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary shadow-glow" />
+              )}
 
               {nodes.map((n) => (
                 <button
@@ -119,7 +147,7 @@ export function BentoSection() {
                   onFocus={() => setActive(n.name)}
                   onBlur={() => setActive(null)}
                   style={{ left: `${n.x}%`, top: `${n.y}%` }}
-                  className={`absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium transition-smooth ${
+                  className={`absolute inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium transition-smooth ${
                     active === n.name
                       ? "border-primary bg-primary/15 text-primary scale-110"
                       : active
@@ -127,6 +155,13 @@ export function BentoSection() {
                         : "border-border bg-background/60 text-muted-foreground hover:border-primary/60 hover:text-primary"
                   }`}
                 >
+                  {active === n.name && skillLogos[n.name] && (
+                    <img
+                      src={skillLogos[n.name]}
+                      alt=""
+                      className="h-3.5 w-3.5 object-contain"
+                    />
+                  )}
                   {n.name}
                 </button>
               ))}
