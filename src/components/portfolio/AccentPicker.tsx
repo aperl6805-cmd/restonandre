@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Palette } from "lucide-react";
+import { Palette, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "accent-hsl";
