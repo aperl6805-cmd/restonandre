@@ -41,7 +41,7 @@ export function CustomCursor() {
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
-        textShadow: "0 0 10px hsl(160 84% 55% / 0.6)",
+        textShadow: "0 0 10px currentColor",
       }}
       aria-hidden
     >
