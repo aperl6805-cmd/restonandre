@@ -155,6 +155,13 @@ export function BentoSection() {
                         : "border-border bg-background/60 text-muted-foreground hover:border-primary/60 hover:text-primary"
                   }`}
                 >
+                  {active === n.name && skillLogos[n.name] && (
+                    <img
+                      src={skillLogos[n.name]}
+                      alt=""
+                      className="h-3.5 w-3.5 object-contain"
+                    />
+                  )}
                   {n.name}
                 </button>
               ))}
