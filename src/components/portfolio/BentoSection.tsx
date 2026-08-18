@@ -147,7 +147,7 @@ export function BentoSection() {
                   onFocus={() => setActive(n.name)}
                   onBlur={() => setActive(null)}
                   style={{ left: `${n.x}%`, top: `${n.y}%` }}
-                  className={`absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium transition-smooth ${
+                  className={`absolute inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium transition-smooth ${
                     active === n.name
                       ? "border-primary bg-primary/15 text-primary scale-110"
                       : active
