@@ -123,7 +123,19 @@ export function BentoSection() {
                 ))}
               </svg>
 
-              <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary shadow-glow" />
+              {active && skillLogos[active] ? (
+                <motion.img
+                  key={active}
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  src={skillLogos[active]}
+                  alt={`${active} logo`}
+                  className="absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 object-contain drop-shadow-lg"
+                />
+              ) : (
+                <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary shadow-glow" />
+              )}
 
               {nodes.map((n) => (
                 <button
