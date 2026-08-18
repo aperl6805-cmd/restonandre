@@ -85,6 +85,7 @@ function Index() {
         <FooterSection />
         <BackToTop />
         <SoundToggle />
+        <AccentPicker />
       </div>
     </SkillHighlightProvider>
   );
