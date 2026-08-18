@@ -4,6 +4,13 @@ import { useSkillHighlight } from "./SkillHighlight";
 import { uiSound } from "./SoundToggle";
 import { Reveal } from "./Reveal";
 
+import tsAsset from "@/assets/skill-typescript.png.asset.json";
+import reactAsset from "@/assets/skill-react.png.asset.json";
+import pgAsset from "@/assets/skill-postgresql.png.asset.json";
+import canvasAsset from "@/assets/skill-canvas.png.asset.json";
+import audioAsset from "@/assets/skill-webaudio.png.asset.json";
+import tailwindAsset from "@/assets/skill-tailwind.png.asset.json";
+
 const skills = [
   "TypeScript",
   "React",
@@ -14,6 +21,15 @@ const skills = [
   "Web Audio",
   "Tailwind",
 ];
+
+const skillLogos: Record<string, string> = {
+  TypeScript: tsAsset.url,
+  React: reactAsset.url,
+  PostgreSQL: pgAsset.url,
+  Canvas: canvasAsset.url,
+  "Web Audio": audioAsset.url,
+  Tailwind: tailwindAsset.url,
+};
 
 // Radial constellation coordinates (percent of the box)
 const nodes = skills.map((name, i) => {
