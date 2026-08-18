@@ -134,7 +134,7 @@ export function AccentPicker() {
   const currentHex = hslToHex(hsl);
 
   return (
-    <div className="fixed bottom-6 left-6 z-[99]">
+    <div className="fixed bottom-20 left-6 z-[99]">
       {open && (
         <div className="mb-3 w-64 rounded-2xl border border-border bg-surface/95 p-4 shadow-glow backdrop-blur-xl">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
