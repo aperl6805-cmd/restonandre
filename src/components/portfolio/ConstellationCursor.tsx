@@ -107,7 +107,30 @@ export function ConstellationCursor() {
       }
     };
 
+    let accent = "hsl(160 84% 55%)";
+    let frame = 0;
+    const readAccent = () => {
+      const v = getComputedStyle(document.documentElement)
+        .getPropertyValue("--primary-glow")
+        .trim();
+      if (v) accent = v;
+    };
+    readAccent();
+
+    const withAlpha = (color: string, alpha: number) => {
+      // works for hsl(h s% l%) and #rrggbb
+      if (color.startsWith("#")) {
+        const int = parseInt(color.slice(1), 16);
+        return `rgba(${(int >> 16) & 255}, ${(int >> 8) & 255}, ${int & 255}, ${alpha})`;
+      }
+      return color.replace(/^hsla?\(([^)]+)\)$/, (_m, inner) => {
+        const parts = String(inner).split("/")[0].trim();
+        return `hsl(${parts} / ${alpha})`;
+      });
+    };
+
     const animate = () => {
+      if (frame++ % 20 === 0) readAccent();
       ctx.clearRect(0, 0, W, H);
 
       points.forEach((p) => p.update());
@@ -122,7 +145,7 @@ export function ConstellationCursor() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < MAX_DIST) {
             const alpha = (1 - dist / MAX_DIST) * Math.min(a.alpha, b.alpha) * 0.6;
-            ctx.strokeStyle = `hsla(160, 84%, 55%, ${alpha})`;
+            ctx.strokeStyle = withAlpha(accent, alpha);
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -141,14 +164,15 @@ export function ConstellationCursor() {
         ctx.translate(p.x, p.y);
         ctx.rotate(p.twinklePhase);
         ctx.font = `${Math.round(size)}px ui-monospace, SFMono-Regular, Menlo, monospace`;
-        ctx.fillStyle = `hsla(160, 84%, 55%, ${alpha})`;
+        ctx.fillStyle = withAlpha(accent, alpha);
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.shadowColor = `hsla(160, 84%, 55%, ${alpha})`;
+        ctx.shadowColor = withAlpha(accent, alpha);
         ctx.shadowBlur = 8;
         ctx.fillText("*", 0, 0);
         ctx.restore();
       });
+
 
       raf = requestAnimationFrame(animate);
     };
