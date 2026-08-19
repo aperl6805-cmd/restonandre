@@ -65,16 +65,23 @@ export function BentoSection() {
           <article className="relative h-full overflow-hidden rounded-2xl border border-border bg-surface p-6 shadow-glow transition-smooth hover:border-primary/50 md:p-8">
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-primary/10 blur-3xl" />
             <h3 className="relative text-lg font-semibold text-foreground">About Me</h3>
-            <p className="relative mt-3 leading-relaxed text-muted-foreground">
-              I'm a software developer based in the Philippines focused on building
-              web applications that are both delightful and reliable. I move easily
-              between product, design, and infrastructure, which means I can ship a
-              feature from a sketch to a deployed Postgres-backed API.
-            </p>
-            <p className="relative mt-4 leading-relaxed text-muted-foreground">
-              Outside of code, I tinker with mechanical keyboards, brew pour-over
-              coffee, and poke at rendering engines whenever I get the chance.
-            </p>
+
+            <div className="relative mt-4 grid gap-6 sm:grid-cols-[minmax(0,200px)_1fr] sm:items-start">
+              <XrayPortrait />
+
+              <div>
+                <p className="leading-relaxed text-muted-foreground">
+                  I'm a software developer based in the Philippines focused on building
+                  web applications that are both delightful and reliable. I move easily
+                  between product, design, and infrastructure, which means I can ship a
+                  feature from a sketch to a deployed Postgres-backed API.
+                </p>
+                <p className="mt-4 leading-relaxed text-muted-foreground">
+                  Outside of code, I tinker with mechanical keyboards, brew pour-over
+                  coffee, and poke at rendering engines whenever I get the chance.
+                </p>
+              </div>
+            </div>
 
             <div className="relative mt-7 flex flex-wrap gap-3">
               {[
