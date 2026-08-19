@@ -3,6 +3,7 @@ import { Coffee, Keyboard, Sparkles } from "lucide-react";
 import { useSkillHighlight } from "./SkillHighlight";
 import { uiSound } from "./SoundToggle";
 import { Reveal } from "./Reveal";
+import { XrayPortrait } from "./XrayPortrait";
 
 import tsAsset from "@/assets/skill-typescript.png.asset.json";
 import reactAsset from "@/assets/skill-react.png.asset.json";
